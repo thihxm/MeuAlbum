@@ -12,6 +12,7 @@ private let reuseIdentifier = "StickerNumberCell"
 
 class StickerCalendarCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    var categories: [Category] = []
     var stickers: [Sticker] = []
 
     override func viewDidLoad() {
@@ -19,8 +20,6 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-//        collectionView.backgroundColor = .silver
-//        title = "Olá"
         
         // Register cell classes
         self.collectionView!.register(StickerCategoryHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(StickerCategoryHeaderView.self)")
@@ -34,6 +33,7 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
         let context = PersistenceController.preview.container.viewContext
         
         do {
+            categories = try context.fetch(Category.fetch())
             stickers = try context.fetch(Sticker.fetch())
         } catch {
             print(error)
@@ -43,7 +43,7 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return categories.count
     }
 
 
@@ -63,7 +63,7 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
             guard let categoryHeader = headerView as? StickerCategoryHeaderView
             else { return headerView }
             
-            categoryHeader.configure(title: "Brasil")
+            categoryHeader.configure(title: categories[indexPath.section].name)
             return categoryHeader
         default:
             // 5
@@ -74,7 +74,6 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> StickerNumberCollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! StickerNumberCollectionViewCell
-    
         // Configure the cell
         let sticker = stickers[indexPath.row]
         cell.configure(using: sticker)

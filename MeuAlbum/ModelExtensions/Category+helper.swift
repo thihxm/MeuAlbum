@@ -48,14 +48,14 @@ extension Category {
         setPrimitiveValue(CategoryType.team.rawValue, forKey: CategoryProperties.type)
     }
     
-    static func delete(at offset: IndexSet, for stickers: [Sticker]) {
-        if let first = stickers.first, let viewContext = first.managedObjectContext {
-            offset.map { stickers[$0] }.forEach(viewContext.delete)
+    static func delete(at offset: IndexSet, for categories: [Category]) {
+        if let first = categories.first, let viewContext = first.managedObjectContext {
+            offset.map { categories[$0] }.forEach(viewContext.delete)
         }
     }
     
-    static func fetch() -> NSFetchRequest<Sticker> {
-        let request = NSFetchRequest<Sticker>(entityName: "Category")
+    static func fetch() -> NSFetchRequest<Category> {
+        let request = NSFetchRequest<Category>(entityName: "Category")
         request.sortDescriptors = [NSSortDescriptor(keyPath: \Category.type_, ascending: true)]
         request.predicate = NSPredicate(format: "TRUEPREDICATE")
         return request
