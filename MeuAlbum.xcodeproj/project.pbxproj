@@ -7,25 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF2677772706313A0046174E /* StickerCalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2677762706313A0046174E /* StickerCalendarCollectionViewController.swift */; };
+		AF267779270631A50046174E /* StickerNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF267778270631A50046174E /* StickerNumberCollectionViewCell.swift */; };
+		AF26777C270633D90046174E /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF26777B270633D90046174E /* UIColor+AppColors.swift */; };
+		AF26777E270636A00046174E /* Category+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF26777D270636A00046174E /* Category+helper.swift */; };
+		AF26778027063F3D0046174E /* Sticker+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF26777F27063F3D0046174E /* Sticker+helper.swift */; };
+		AF26778427064F870046174E /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF26778327064F870046174E /* PersistenceController.swift */; };
+		AF2677862706B32C0046174E /* StickerCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2677852706B32C0046174E /* StickerCategoryHeaderView.swift */; };
 		AFC2B97A27024008009D90D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2B97927024008009D90D8 /* AppDelegate.swift */; };
 		AFC2B97C27024008009D90D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2B97B27024008009D90D8 /* SceneDelegate.swift */; };
 		AFC2B97E27024008009D90D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2B97D27024008009D90D8 /* ViewController.swift */; };
-		AFC2B98127024008009D90D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC2B97F27024008009D90D8 /* Main.storyboard */; };
 		AFC2B98427024008009D90D8 /* MeuAlbum.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AFC2B98227024008009D90D8 /* MeuAlbum.xcdatamodeld */; };
 		AFC2B9862702400A009D90D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFC2B9852702400A009D90D8 /* Assets.xcassets */; };
 		AFC2B9892702400A009D90D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC2B9872702400A009D90D8 /* LaunchScreen.storyboard */; };
+		AFC2B992270240D3009D90D8 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC2B991270240D3009D90D8 /* Vision.framework */; };
+		AFC2B99927025603009D90D8 /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2B99827025603009D90D8 /* StickerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF2677762706313A0046174E /* StickerCalendarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCalendarCollectionViewController.swift; sourceTree = "<group>"; };
+		AF267778270631A50046174E /* StickerNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerNumberCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF26777B270633D90046174E /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
+		AF26777D270636A00046174E /* Category+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+helper.swift"; sourceTree = "<group>"; };
+		AF26777F27063F3D0046174E /* Sticker+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sticker+helper.swift"; sourceTree = "<group>"; };
+		AF26778327064F870046174E /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		AF2677852706B32C0046174E /* StickerCategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCategoryHeaderView.swift; sourceTree = "<group>"; };
 		AFC2B97627024008009D90D8 /* MeuAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeuAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC2B97927024008009D90D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFC2B97B27024008009D90D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AFC2B97D27024008009D90D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AFC2B98027024008009D90D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AFC2B98327024008009D90D8 /* MeuAlbum.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeuAlbum.xcdatamodel; sourceTree = "<group>"; };
 		AFC2B9852702400A009D90D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFC2B9882702400A009D90D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFC2B98A2702400A009D90D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFC2B991270240D3009D90D8 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
+		AFC2B99827025603009D90D8 /* StickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +49,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFC2B992270240D3009D90D8 /* Vision.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF26777A270633270046174E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF26777B270633D90046174E /* UIColor+AppColors.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		AFC2B96D27024008009D90D8 = {
 			isa = PBXGroup;
 			children = (
 				AFC2B97827024008009D90D8 /* MeuAlbum */,
 				AFC2B97727024008009D90D8 /* Products */,
+				AFC2B990270240D3009D90D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +84,71 @@
 		AFC2B97827024008009D90D8 /* MeuAlbum */ = {
 			isa = PBXGroup;
 			children = (
+				AF26777A270633270046174E /* Extensions */,
+				AFC2B9942702559A009D90D8 /* Scenes */,
+				AFC2B99327024D80009D90D8 /* ModelExtensions */,
 				AFC2B97927024008009D90D8 /* AppDelegate.swift */,
 				AFC2B97B27024008009D90D8 /* SceneDelegate.swift */,
+				AF26778327064F870046174E /* PersistenceController.swift */,
 				AFC2B97D27024008009D90D8 /* ViewController.swift */,
-				AFC2B97F27024008009D90D8 /* Main.storyboard */,
 				AFC2B9852702400A009D90D8 /* Assets.xcassets */,
 				AFC2B9872702400A009D90D8 /* LaunchScreen.storyboard */,
 				AFC2B98A2702400A009D90D8 /* Info.plist */,
 				AFC2B98227024008009D90D8 /* MeuAlbum.xcdatamodeld */,
 			);
 			path = MeuAlbum;
+			sourceTree = "<group>";
+		};
+		AFC2B990270240D3009D90D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFC2B991270240D3009D90D8 /* Vision.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AFC2B99327024D80009D90D8 /* ModelExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF26777D270636A00046174E /* Category+helper.swift */,
+				AF26777F27063F3D0046174E /* Sticker+helper.swift */,
+			);
+			path = ModelExtensions;
+			sourceTree = "<group>";
+		};
+		AFC2B9942702559A009D90D8 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				AFC2B995270255A3009D90D8 /* StickerList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		AFC2B995270255A3009D90D8 /* StickerList */ = {
+			isa = PBXGroup;
+			children = (
+				AFC2B997270255D1009D90D8 /* View */,
+				AFC2B996270255C0009D90D8 /* Data */,
+			);
+			path = StickerList;
+			sourceTree = "<group>";
+		};
+		AFC2B996270255C0009D90D8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AFC2B997270255D1009D90D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AFC2B99827025603009D90D8 /* StickerCell.swift */,
+				AF2677762706313A0046174E /* StickerCalendarCollectionViewController.swift */,
+				AF267778270631A50046174E /* StickerNumberCollectionViewCell.swift */,
+				AF2677852706B32C0046174E /* StickerCategoryHeaderView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +211,6 @@
 			files = (
 				AFC2B9892702400A009D90D8 /* LaunchScreen.storyboard in Resources */,
 				AFC2B9862702400A009D90D8 /* Assets.xcassets in Resources */,
-				AFC2B98127024008009D90D8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,8 +222,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFC2B97E27024008009D90D8 /* ViewController.swift in Sources */,
+				AF26777E270636A00046174E /* Category+helper.swift in Sources */,
+				AF26777C270633D90046174E /* UIColor+AppColors.swift in Sources */,
+				AF26778427064F870046174E /* PersistenceController.swift in Sources */,
+				AF2677772706313A0046174E /* StickerCalendarCollectionViewController.swift in Sources */,
+				AF2677862706B32C0046174E /* StickerCategoryHeaderView.swift in Sources */,
 				AFC2B98427024008009D90D8 /* MeuAlbum.xcdatamodeld in Sources */,
+				AF267779270631A50046174E /* StickerNumberCollectionViewCell.swift in Sources */,
 				AFC2B97A27024008009D90D8 /* AppDelegate.swift in Sources */,
+				AF26778027063F3D0046174E /* Sticker+helper.swift in Sources */,
+				AFC2B99927025603009D90D8 /* StickerCell.swift in Sources */,
 				AFC2B97C27024008009D90D8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,14 +239,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AFC2B97F27024008009D90D8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AFC2B98027024008009D90D8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AFC2B9872702400A009D90D8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -298,7 +378,7 @@
 				INFOPLIST_FILE = MeuAlbum/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -326,7 +406,7 @@
 				INFOPLIST_FILE = MeuAlbum/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
