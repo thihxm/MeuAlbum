@@ -83,7 +83,7 @@ extension Sticker {
     }
     
     static func example(context: NSManagedObjectContext) -> Sticker {
-        Sticker(
+        return Sticker(
             amount: 0,
             name: "Kaká",
             number: 1,

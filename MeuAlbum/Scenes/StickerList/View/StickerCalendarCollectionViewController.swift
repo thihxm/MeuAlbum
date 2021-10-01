@@ -43,8 +43,7 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
 

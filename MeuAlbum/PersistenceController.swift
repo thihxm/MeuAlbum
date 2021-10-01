@@ -13,35 +13,41 @@ class PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
+        
+        let brazil = Category(name: "Brasil", type: .team, context: viewContext)
 
-        _ = Sticker(
+        let badge = Sticker(
             amount: 0,
             name: "Brasão Brasil",
             number: 1,
             type: .badge,
             context: viewContext)
+        brazil.addToStickers(badge)
 
-        _ = Sticker(
+        let teamPhoto = Sticker(
             amount: 0,
             name: "Time Brasil",
             number: 2,
             type: .team,
             context: viewContext)
+        brazil.addToStickers(teamPhoto)
 
-        _ = Sticker(
+        let samplePlayer = Sticker(
             amount: 0,
             name: "Kaká",
             number: 3,
             type: .player,
             context: viewContext)
+        brazil.addToStickers(samplePlayer)
         
         for i in 4...20 {
-            _ = Sticker(
+            let sticker = Sticker(
                 amount: Int16(i) - 1,
                 name: "Kaká",
                 number: Int16(i),
                 type: .player,
                 context: viewContext)
+            brazil.addToStickers(sticker)
         }
         
         do {
