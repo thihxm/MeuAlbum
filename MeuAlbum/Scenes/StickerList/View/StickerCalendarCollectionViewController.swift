@@ -14,7 +14,7 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
     
     var categories: [Category] = []
     var stickers: [Sticker] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +34,7 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
         
         do {
             categories = try context.fetch(Category.fetch())
-            stickers = try context.fetch(Sticker.fetch())
+//            stickers = try context.fetch(Sticker.fetch())
         } catch {
             print(error)
         }
@@ -49,7 +49,7 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return stickers.count
+        return categories.first!.stickers!.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -75,7 +75,8 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> StickerNumberCollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! StickerNumberCollectionViewCell
         // Configure the cell
-        let sticker = stickers[indexPath.row]
+        let stickers = categories[indexPath.section].stickers?.allObjects as! [Sticker]
+        let sticker = stickers.sorted(by: { $0.number < $1.number })[indexPath.row]
         cell.configure(using: sticker)
     
         return cell

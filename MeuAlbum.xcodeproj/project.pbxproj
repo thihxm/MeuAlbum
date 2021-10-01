@@ -64,6 +64,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		AF39DE9A2707C20F004B852F /* CategoryView */ = {
+			isa = PBXGroup;
+			children = (
+				AF39DE9B2707C22B004B852F /* View */,
+			);
+			path = CategoryView;
+			sourceTree = "<group>";
+		};
+		AF39DE9B2707C22B004B852F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		AFC2B96D27024008009D90D8 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +134,7 @@
 		AFC2B9942702559A009D90D8 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				AF39DE9A2707C20F004B852F /* CategoryView */,
 				AFC2B995270255A3009D90D8 /* StickerList */,
 			);
 			path = Scenes;
