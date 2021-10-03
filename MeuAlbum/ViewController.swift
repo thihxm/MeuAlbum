@@ -27,7 +27,8 @@ class ViewController: UIViewController {
         view.backgroundColor = .blue
         let layout = UICollectionViewFlowLayout()
         layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
-        let stickerCollectionVC = StickerCalendarCollectionViewController(collectionViewLayout: layout)
+//        let stickerCollectionVC = StickerCalendarCollectionViewController(collectionViewLayout: layout)
+        let stickerCollectionVC = CategoryCollectionViewController()
         navigationController?.pushViewController(stickerCollectionVC, animated: true)
     }
 

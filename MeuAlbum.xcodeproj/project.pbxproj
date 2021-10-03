@@ -14,6 +14,7 @@
 		AF26778027063F3D0046174E /* Sticker+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF26777F27063F3D0046174E /* Sticker+helper.swift */; };
 		AF26778427064F870046174E /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF26778327064F870046174E /* PersistenceController.swift */; };
 		AF2677862706B32C0046174E /* StickerCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2677852706B32C0046174E /* StickerCategoryHeaderView.swift */; };
+		AF39DE9D2707C585004B852F /* CategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF39DE9C2707C585004B852F /* CategoryCollectionViewController.swift */; };
 		AFC2B97A27024008009D90D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2B97927024008009D90D8 /* AppDelegate.swift */; };
 		AFC2B97C27024008009D90D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2B97B27024008009D90D8 /* SceneDelegate.swift */; };
 		AFC2B97E27024008009D90D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2B97D27024008009D90D8 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 		AF26777F27063F3D0046174E /* Sticker+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sticker+helper.swift"; sourceTree = "<group>"; };
 		AF26778327064F870046174E /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		AF2677852706B32C0046174E /* StickerCategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCategoryHeaderView.swift; sourceTree = "<group>"; };
+		AF39DE9C2707C585004B852F /* CategoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewController.swift; sourceTree = "<group>"; };
 		AFC2B97627024008009D90D8 /* MeuAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeuAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC2B97927024008009D90D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFC2B97B27024008009D90D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF08419A27093C5A00B30752 /* FullAlbumList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FullAlbumList;
+			sourceTree = "<group>";
+		};
 		AF26777A270633270046174E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,17 +73,19 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		AF39DE9A2707C20F004B852F /* CategoryView */ = {
+		AF39DE9A2707C20F004B852F /* CategoryStickersList */ = {
 			isa = PBXGroup;
 			children = (
 				AF39DE9B2707C22B004B852F /* View */,
 			);
-			path = CategoryView;
+			path = CategoryStickersList;
 			sourceTree = "<group>";
 		};
 		AF39DE9B2707C22B004B852F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AFC2B99827025603009D90D8 /* StickerCell.swift */,
+				AF39DE9C2707C585004B852F /* CategoryCollectionViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -134,7 +145,8 @@
 		AFC2B9942702559A009D90D8 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				AF39DE9A2707C20F004B852F /* CategoryView */,
+				AF08419A27093C5A00B30752 /* FullAlbumList */,
+				AF39DE9A2707C20F004B852F /* CategoryStickersList */,
 				AFC2B995270255A3009D90D8 /* StickerList */,
 			);
 			path = Scenes;
@@ -159,7 +171,6 @@
 		AFC2B997270255D1009D90D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AFC2B99827025603009D90D8 /* StickerCell.swift */,
 				AF2677762706313A0046174E /* StickerCalendarCollectionViewController.swift */,
 				AF267778270631A50046174E /* StickerNumberCollectionViewCell.swift */,
 				AF2677852706B32C0046174E /* StickerCategoryHeaderView.swift */,
@@ -243,6 +254,7 @@
 				AF26778427064F870046174E /* PersistenceController.swift in Sources */,
 				AF2677772706313A0046174E /* StickerCalendarCollectionViewController.swift in Sources */,
 				AF2677862706B32C0046174E /* StickerCategoryHeaderView.swift in Sources */,
+				AF39DE9D2707C585004B852F /* CategoryCollectionViewController.swift in Sources */,
 				AFC2B98427024008009D90D8 /* MeuAlbum.xcdatamodeld in Sources */,
 				AF267779270631A50046174E /* StickerNumberCollectionViewCell.swift in Sources */,
 				AFC2B97A27024008009D90D8 /* AppDelegate.swift in Sources */,

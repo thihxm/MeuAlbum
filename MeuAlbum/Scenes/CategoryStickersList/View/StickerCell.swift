@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import SwiftUI
 
-class StickerCell: UITableViewCell {
+class StickerCell: UICollectionViewCell {
+    
+    public var sticker: Sticker?
+    
     private lazy var numberLabel: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        label.textColor = .black
+        label.textColor = sticker!.amount > 0 ? .white : .wineRed
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         
         return label
@@ -35,41 +39,43 @@ class StickerCell: UITableViewCell {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        label.textColor = .black
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         
         return label
     }()
     
     func configure(using sticker: Sticker) {
+        self.sticker = sticker
+        print(sticker.number)
+        
         numberLabel.text = "\(sticker.number)"
         nameLabel.text = sticker.name
         amountLabel.text = "\(sticker.amount)"
+        
+        self.backgroundColor = sticker.amount > 0 ? .ownedGreen : .white
+        self.layer.borderColor = UIColor.wineRed.cgColor
+        self.layer.borderWidth = 3
+        self.layer.cornerRadius = 16
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        contentView.addSubview(numberLabel)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(amountLabel)
+        addSubview(numberLabel)
+        addSubview(nameLabel)
+        addSubview(amountLabel)
         
         NSLayoutConstraint.activate([
-            numberLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            numberLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            numberLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            numberLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            amountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            amountLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            amountLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            amountLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
