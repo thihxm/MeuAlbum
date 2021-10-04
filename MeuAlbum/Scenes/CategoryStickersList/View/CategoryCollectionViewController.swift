@@ -75,17 +75,17 @@ class CategoryCollectionViewController: UIViewController, UICollectionViewDelega
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let context = PersistenceController.preview.container.viewContext
-        
-        do {
-            stickers = try context.fetch(Sticker.fetch())
-        } catch {
-            print(error)
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        let context = PersistenceController.preview.container.viewContext
+//        
+//        do {
+//            stickers = try context.fetch(Sticker.fetch())
+//        } catch {
+//            print(error)
+//        }
+//    }
 
     // MARK: UICollectionViewDataSource
 
@@ -110,6 +110,16 @@ class CategoryCollectionViewController: UIViewController, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let clickedCell = collectionView.cellForItem(at: indexPath)! as! StickerCell
         let sticker = clickedCell.sticker
+        sticker?.amount += 1
+        PersistenceController.preview.save()
+        collectionView.reloadData()
     }
+}
 
+extension CategoryCollectionViewController: StickerCalendarCollectionDelegate {
+    func selectCategory(_ category: Category) {
+        let stickers = category.stickers?.allObjects as! [Sticker]
+        self.stickers = stickers.sorted(by: { $0.number < $1.number })
+//        self.stickerCollectionView?.reloadData()
+    }
 }

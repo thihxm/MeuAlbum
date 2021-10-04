@@ -14,6 +14,8 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
     
     var categories: [Category] = []
     var stickers: [Sticker] = []
+    let stickerCollectionVC = CategoryCollectionViewController()
+    var delegate: StickerCalendarCollectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,8 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
         // Register cell classes
         self.collectionView!.register(StickerCategoryHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(StickerCategoryHeaderView.self)")
         self.collectionView!.register(StickerNumberCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        self.delegate = stickerCollectionVC
         // Do any additional setup after loading the view.
     }
     
@@ -64,9 +68,12 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
             else { return headerView }
             
             categoryHeader.configure(title: categories[indexPath.section].name)
+            delegate?.selectCategory(self.categories[indexPath.section])
             categoryHeader.onClickHeader = {
                 print("\(self.categories[indexPath.section].name) clicked")
+                self.navigationController?.pushViewController(self.stickerCollectionVC, animated: true)
             }
+            
             return categoryHeader
         default:
             // 5
@@ -98,11 +105,15 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Tapped cell at: \(indexPath.section): \(indexPath.row)")
         let clickedCell = collectionView.cellForItem(at: indexPath)! as! StickerNumberCollectionViewCell
         let sticker = clickedCell.sticker
         sticker?.amount += 1
         PersistenceController.preview.save()
         collectionView.reloadData()
     }
+}
+
+
+protocol StickerCalendarCollectionDelegate {
+    func selectCategory(_ category: Category)
 }
