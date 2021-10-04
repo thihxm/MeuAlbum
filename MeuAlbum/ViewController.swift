@@ -56,12 +56,15 @@ class ViewController: UIViewController {
             categoriesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             categoriesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             categoriesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            categoriesCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
-//            categoriesCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor),
         ])
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
         categoriesCollectionView.backgroundColor = .clear
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
+        let stickerCollectionVC = StickerCalendarCollectionViewController(collectionViewLayout: layout)
+        navigationController?.pushViewController(stickerCollectionVC, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

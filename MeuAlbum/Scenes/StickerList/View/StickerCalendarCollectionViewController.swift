@@ -19,16 +19,14 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
         // Register cell classes
         self.collectionView!.register(StickerCategoryHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(StickerCategoryHeaderView.self)")
         self.collectionView!.register(StickerNumberCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
+        self.collectionView!.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 24, right: 16)
+        
         self.delegate = stickerCollectionVC
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +37,6 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
         
         do {
             categories = try context.fetch(Category.fetch())
-//            stickers = try context.fetch(Sticker.fetch())
         } catch {
             print(error)
         }
