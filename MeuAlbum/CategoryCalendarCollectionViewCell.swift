@@ -59,6 +59,7 @@ class CategoryCalendarCollectionViewCell: UICollectionViewCell {
         titleLabel.text = category.name
         let stickers = category.stickers?.allObjects as! [Sticker]
         self.stickers = stickers.sorted(by: { $0.number < $1.number })
+        self.stickersCollectionView.reloadData()
         self.navigationController = navigationController
     }
     

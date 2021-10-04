@@ -71,14 +71,13 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let context = PersistenceController.preview.container.viewContext
-        
-        categoriesCollectionView.reloadData()
 
         do {
             categories = try context.fetch(Category.fetch())
         } catch {
             print(error)
         }
+        categoriesCollectionView.reloadData()
     }
 
 
