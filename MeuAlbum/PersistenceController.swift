@@ -42,12 +42,48 @@ class PersistenceController {
         
         for i in 4...20 {
             let sticker = Sticker(
-                amount: Int16(i) - 1,
+                amount: (i % 2 == 0 || i % 3 == 0) ? Int16(i) : 0,
                 name: "Kaká",
                 number: Int16(i),
                 type: .player,
                 context: viewContext)
             brazil.addToStickers(sticker)
+        }
+        
+        let italy = Category(name: "Itália", type: .team, context: viewContext)
+
+        let italyBadge = Sticker(
+            amount: 0,
+            name: "Brasão Itália",
+            number: 1,
+            type: .badge,
+            context: viewContext)
+        italy.addToStickers(italyBadge)
+
+        let italyTeamPhoto = Sticker(
+            amount: 0,
+            name: "Time Itália",
+            number: 2,
+            type: .team,
+            context: viewContext)
+        italy.addToStickers(italyTeamPhoto)
+
+        let sampleItalyPlayer = Sticker(
+            amount: 0,
+            name: "Verratti",
+            number: 3,
+            type: .player,
+            context: viewContext)
+        italy.addToStickers(sampleItalyPlayer)
+        
+        for i in 4...20 {
+            let sticker = Sticker(
+                amount: i % 2 != 0 ? Int16(i) : 0,
+                name: "Verratti",
+                number: Int16(i),
+                type: .player,
+                context: viewContext)
+            italy.addToStickers(sticker)
         }
         
         do {

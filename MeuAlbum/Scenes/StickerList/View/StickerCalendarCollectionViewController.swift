@@ -33,6 +33,7 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode = .never
         
         let context = PersistenceController.preview.container.viewContext
         
@@ -68,9 +69,8 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
             else { return headerView }
             
             categoryHeader.configure(title: categories[indexPath.section].name)
-            delegate?.selectCategory(self.categories[indexPath.section])
             categoryHeader.onClickHeader = {
-                print("\(self.categories[indexPath.section].name) clicked")
+                self.delegate?.selectCategory(self.categories[indexPath.section])
                 self.navigationController?.pushViewController(self.stickerCollectionVC, animated: true)
             }
             

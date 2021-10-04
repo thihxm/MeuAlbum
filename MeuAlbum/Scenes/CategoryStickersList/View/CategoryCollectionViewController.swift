@@ -7,7 +7,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "CategoryCell"
 
 class CategoryCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -53,8 +53,8 @@ class CategoryCollectionViewController: UIViewController, UICollectionViewDelega
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
-        title = "Brasil"
         view.backgroundColor = .white
+        navigationItem.largeTitleDisplayMode = .always
 
         // Register cell classes
         stickerCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
@@ -74,18 +74,6 @@ class CategoryCollectionViewController: UIViewController, UICollectionViewDelega
 
         // Do any additional setup after loading the view.
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        
-//        let context = PersistenceController.preview.container.viewContext
-//        
-//        do {
-//            stickers = try context.fetch(Sticker.fetch())
-//        } catch {
-//            print(error)
-//        }
-//    }
 
     // MARK: UICollectionViewDataSource
 
@@ -118,8 +106,9 @@ class CategoryCollectionViewController: UIViewController, UICollectionViewDelega
 
 extension CategoryCollectionViewController: StickerCalendarCollectionDelegate {
     func selectCategory(_ category: Category) {
+        title = category.name
         let stickers = category.stickers?.allObjects as! [Sticker]
         self.stickers = stickers.sorted(by: { $0.number < $1.number })
-//        self.stickerCollectionView?.reloadData()
+        self.stickerCollectionView?.reloadData()
     }
 }

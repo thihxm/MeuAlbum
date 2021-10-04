@@ -15,6 +15,7 @@
 		AF26778427064F870046174E /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF26778327064F870046174E /* PersistenceController.swift */; };
 		AF2677862706B32C0046174E /* StickerCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2677852706B32C0046174E /* StickerCategoryHeaderView.swift */; };
 		AF39DE9D2707C585004B852F /* CategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF39DE9C2707C585004B852F /* CategoryCollectionViewController.swift */; };
+		AF8BF118270B37AD008C4C48 /* CategoryCalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8BF117270B37AD008C4C48 /* CategoryCalendarCollectionViewCell.swift */; };
 		AFC2B97A27024008009D90D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2B97927024008009D90D8 /* AppDelegate.swift */; };
 		AFC2B97C27024008009D90D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2B97B27024008009D90D8 /* SceneDelegate.swift */; };
 		AFC2B97E27024008009D90D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2B97D27024008009D90D8 /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		AF26778327064F870046174E /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		AF2677852706B32C0046174E /* StickerCategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCategoryHeaderView.swift; sourceTree = "<group>"; };
 		AF39DE9C2707C585004B852F /* CategoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewController.swift; sourceTree = "<group>"; };
+		AF8BF117270B37AD008C4C48 /* CategoryCalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		AFC2B97627024008009D90D8 /* MeuAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeuAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC2B97927024008009D90D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFC2B97B27024008009D90D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				AFC2B97B27024008009D90D8 /* SceneDelegate.swift */,
 				AF26778327064F870046174E /* PersistenceController.swift */,
 				AFC2B97D27024008009D90D8 /* ViewController.swift */,
+				AF8BF117270B37AD008C4C48 /* CategoryCalendarCollectionViewCell.swift */,
 				AFC2B9852702400A009D90D8 /* Assets.xcassets */,
 				AFC2B9872702400A009D90D8 /* LaunchScreen.storyboard */,
 				AFC2B98A2702400A009D90D8 /* Info.plist */,
@@ -256,6 +259,7 @@
 				AF2677862706B32C0046174E /* StickerCategoryHeaderView.swift in Sources */,
 				AF39DE9D2707C585004B852F /* CategoryCollectionViewController.swift in Sources */,
 				AFC2B98427024008009D90D8 /* MeuAlbum.xcdatamodeld in Sources */,
+				AF8BF118270B37AD008C4C48 /* CategoryCalendarCollectionViewCell.swift in Sources */,
 				AF267779270631A50046174E /* StickerNumberCollectionViewCell.swift in Sources */,
 				AFC2B97A27024008009D90D8 /* AppDelegate.swift in Sources */,
 				AF26778027063F3D0046174E /* Sticker+helper.swift in Sources */,
