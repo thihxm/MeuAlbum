@@ -15,10 +15,11 @@ class CategoryCollectionViewController: UIViewController, UICollectionViewDelega
     
     func generateLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalHeight(2/3),
+            widthDimension: .fractionalWidth(2/3),
             heightDimension: .fractionalHeight(1.0))
-        let fullStickerItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        fullStickerItem.contentInsets = NSDirectionalEdgeInsets(
+        
+        let stickerItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        stickerItem.contentInsets = NSDirectionalEdgeInsets(
             top: 8,
             leading: 8,
             bottom: 8,
@@ -27,13 +28,12 @@ class CategoryCollectionViewController: UIViewController, UICollectionViewDelega
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1/4))
-//        NSCollectionLayoutSize(
-//            widthDimension: .fractionalWidth(1.0),
-//            heightDimension: .fractionalWidth(2/3))
+
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
-            subitem: fullStickerItem,
+            subitem: stickerItem,
             count: 3)
+        
         group.contentInsets = NSDirectionalEdgeInsets(
             top: 0,
             leading: 8,
@@ -103,52 +103,13 @@ class CategoryCollectionViewController: UIViewController, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = stickerCollectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! StickerCell
         cell.configure(using: stickers[indexPath.row])
-        // Configure the cell
     
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 96, height: 144)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 8
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 16
-//    }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let clickedCell = collectionView.cellForItem(at: indexPath)! as! StickerCell
+        let sticker = clickedCell.sticker
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 
 }

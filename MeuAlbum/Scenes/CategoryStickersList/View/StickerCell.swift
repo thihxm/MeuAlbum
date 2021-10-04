@@ -12,70 +12,114 @@ class StickerCell: UICollectionViewCell {
     
     public var sticker: Sticker?
     
+    func addShadow(to view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.25
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        view.layer.shadowRadius = 4
+    }
+    
+    private lazy var borderView: UIView = {
+        let view = UIView()
+        view.layer.borderColor = UIColor.wineRed.cgColor
+        view.layer.borderWidth = LayoutMetrics.borderWidth
+        view.layer.cornerRadius = LayoutMetrics.viewRadius
+        
+        addShadow(to: view)
+        
+        return view
+    }()
+    
     private lazy var numberLabel: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        
-        label.textColor = sticker!.amount > 0 ? .white : .wineRed
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: LayoutMetrics.numberFontSize, weight: .bold)
         
         return label
     }()
     
-    private lazy var nameLabel: UILabel = {
-        let label = UILabel()
+    private lazy var amountBadge: UIView = {
+        let view = UIView()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = false
         
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        view.backgroundColor = .tintColor
+        view.layer.cornerRadius = LayoutMetrics.amountBadgeSize / 2
         
-        return label
+        addShadow(to: view)
+        
+        return view
     }()
     
     private lazy var amountLabel: UILabel = {
         let label = UILabel()
-        
+
         label.translatesAutoresizingMaskIntoConstraints = false
-        
+
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        
+        label.font = UIFont.systemFont(ofSize: LayoutMetrics.amountBadgeFontSize, weight: .regular)
+        label.superview?.backgroundColor = .red
+
         return label
     }()
     
     func configure(using sticker: Sticker) {
         self.sticker = sticker
-        print(sticker.number)
         
         numberLabel.text = "\(sticker.number)"
-        nameLabel.text = sticker.name
+        numberLabel.textColor = sticker.amount > 0 ? .white : .wineRed
+//        nameLabel.text = sticker.name
         amountLabel.text = "\(sticker.amount)"
+        if sticker.amount <= 0 {
+            amountBadge.removeFromSuperview()
+        }
         
-        self.backgroundColor = sticker.amount > 0 ? .ownedGreen : .white
-        self.layer.borderColor = UIColor.wineRed.cgColor
-        self.layer.borderWidth = 3
-        self.layer.cornerRadius = 16
+        borderView.backgroundColor = sticker.amount > 0 ? .ownedGreen : .white
+        self.backgroundColor = .clear
+        self.layer.cornerRadius = LayoutMetrics.viewRadius
     }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        addSubview(numberLabel)
-        addSubview(nameLabel)
-        addSubview(amountLabel)
+        self.sticker = nil
+        
+        borderView.frame = self.bounds
+        
+        self.addSubview(borderView)
+        self.addSubview(numberLabel)
+//        self.addSubview(amountLabel)
+        amountBadge.addSubview(amountLabel)
+        self.addSubview(amountBadge)
+        
+        self.bringSubviewToFront(amountLabel)
         
         NSLayoutConstraint.activate([
-            numberLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            numberLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            numberLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            numberLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
-            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-            amountLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            amountLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            amountBadge.widthAnchor.constraint(equalToConstant: LayoutMetrics.amountBadgeSize),
+            amountBadge.heightAnchor.constraint(equalToConstant: LayoutMetrics.amountBadgeSize),
+            amountBadge.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: LayoutMetrics.amountBadgeOffsetX),
+            amountBadge.topAnchor.constraint(equalTo: self.topAnchor, constant: LayoutMetrics.amountBadgeOffsetY),
+            amountLabel.centerXAnchor.constraint(equalTo: amountBadge.centerXAnchor),
+            amountLabel.centerYAnchor.constraint(equalTo: amountBadge.centerYAnchor),
         ])
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private struct LayoutMetrics {
+        static let amountBadgeSize: CGFloat = 24
+        static let amountBadgeFontSize: CGFloat = 14
+        static let amountBadgeOffsetX: CGFloat = 8
+        static let amountBadgeOffsetY: CGFloat = -4
+        static let viewRadius: CGFloat = 16
+        static let borderWidth: CGFloat = 3
+        static let numberFontSize: CGFloat = 32
     }
 
 }
