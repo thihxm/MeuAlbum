@@ -11,7 +11,6 @@ private let reuseIdentifier = "CalendarViewCell"
 
 class ViewController: UIViewController {
     
-    var categoriesCollectionView: UICollectionView!
     var categories: [Category] = []
     
     func generateLayout() -> UICollectionViewLayout {
@@ -39,6 +38,17 @@ class ViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
+    
+    private lazy var categoriesCollectionView: UICollectionView = {
+        var collectionView = UICollectionView(frame: .zero, collectionViewLayout: generateLayout())
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView.register(CategoryCalendarCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.backgroundColor = .clear
+        
+        return collectionView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +56,8 @@ class ViewController: UIViewController {
         title = "Meu Álbum"
         view.backgroundColor = .systemBackground
         
-        categoriesCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
-        categoriesCollectionView.register(CategoryCalendarCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         view.addSubview(categoriesCollectionView)
         
-        categoriesCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             categoriesCollectionView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             categoriesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -59,7 +66,6 @@ class ViewController: UIViewController {
         ])
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
-        categoriesCollectionView.backgroundColor = .clear
         
         let layout = UICollectionViewFlowLayout()
         layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)

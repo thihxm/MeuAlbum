@@ -45,7 +45,22 @@ class CategoryCollectionViewController: UIViewController, UICollectionViewDelega
         return layout
     }
         
-    var stickerCollectionView: UICollectionView!
+    private lazy var stickerCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: generateLayout())
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView.register(StickerCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.backgroundColor = .clear
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressRecognizer.minimumPressDuration = 0.5
+        longPressRecognizer.delegate = self
+        longPressRecognizer.delaysTouchesBegan = true
+        collectionView.addGestureRecognizer(longPressRecognizer)
+        
+        return collectionView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,12 +71,8 @@ class CategoryCollectionViewController: UIViewController, UICollectionViewDelega
         view.backgroundColor = .white
         navigationItem.largeTitleDisplayMode = .always
 
-        // Register cell classes
-        stickerCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
-        stickerCollectionView.register(StickerCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         view.addSubview(stickerCollectionView)
         
-        stickerCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stickerCollectionView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             stickerCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -70,25 +81,16 @@ class CategoryCollectionViewController: UIViewController, UICollectionViewDelega
         ])
         stickerCollectionView.delegate = self
         stickerCollectionView.dataSource = self
-        stickerCollectionView.backgroundColor = .clear
-        
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
-        longPressRecognizer.minimumPressDuration = 0.5
-        longPressRecognizer.delegate = self
-        longPressRecognizer.delaysTouchesBegan = true
-        self.stickerCollectionView.addGestureRecognizer(longPressRecognizer)
     }
 
     // MARK: UICollectionViewDataSource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return stickers.count
     }
 
@@ -113,7 +115,7 @@ extension CategoryCollectionViewController: StickerCalendarCollectionDelegate {
         title = category.name
         let stickers = category.stickers?.allObjects as! [Sticker]
         self.stickers = stickers.sorted(by: { $0.number < $1.number })
-        self.stickerCollectionView?.reloadData()
+        self.stickerCollectionView.reloadData()
     }
 }
 
