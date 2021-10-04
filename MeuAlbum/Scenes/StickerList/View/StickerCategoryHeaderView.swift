@@ -8,6 +8,9 @@
 import UIKit
 
 class StickerCategoryHeaderView: UICollectionReusableView {
+    
+    var onClickHeader: () -> Void = {}
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         
@@ -19,18 +22,38 @@ class StickerCategoryHeaderView: UICollectionReusableView {
         return label
     }()
     
+    private lazy var headerButton: UIButton = {
+        let button = UIButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(clickAction(_:)), for: .touchUpInside)
+        
+        return button
+    }()
+    
     func configure(title: String) {
         titleLabel.text = title
+    }
+    
+    @objc func clickAction(_ sender: UITapGestureRecognizer) {
+        onClickHeader()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.addSubview(titleLabel)
+        self.addSubview(headerButton)
+        
         
         NSLayoutConstraint.activate([
+            headerButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            headerButton.leftAnchor.constraint(equalTo: self.leftAnchor),
+            headerButton.widthAnchor.constraint(equalTo: self.widthAnchor),
+            headerButton.heightAnchor.constraint(equalTo: self.heightAnchor),
+            
             titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor)
+            titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor),
         ])
     }
     

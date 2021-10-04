@@ -64,6 +64,9 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
             else { return headerView }
             
             categoryHeader.configure(title: categories[indexPath.section].name)
+            categoryHeader.onClickHeader = {
+                print("\(self.categories[indexPath.section].name) clicked")
+            }
             return categoryHeader
         default:
             // 5
