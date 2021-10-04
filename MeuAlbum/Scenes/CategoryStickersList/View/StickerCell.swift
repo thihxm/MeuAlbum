@@ -12,6 +12,18 @@ class StickerCell: UICollectionViewCell {
     
     public var sticker: Sticker?
     
+    func stickerBorderColor(for type: StickerType) -> UIColor {
+        switch type {
+        case .badge,
+             .special:
+            return .gold
+        case .team:
+            return .silver
+        default:
+            return .wineRed
+        }
+    }
+    
     func addShadow(to view: UIView) {
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.25
@@ -21,6 +33,9 @@ class StickerCell: UICollectionViewCell {
     
     private lazy var borderView: UIView = {
         let view = UIView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
         view.layer.borderColor = UIColor.wineRed.cgColor
         view.layer.borderWidth = LayoutMetrics.borderWidth
         view.layer.cornerRadius = LayoutMetrics.viewRadius
@@ -67,13 +82,12 @@ class StickerCell: UICollectionViewCell {
     func configure(using sticker: Sticker) {
         self.sticker = sticker
         
+        borderView.layer.borderColor = stickerBorderColor(for: sticker.type).cgColor
         numberLabel.text = "\(sticker.number)"
         numberLabel.textColor = sticker.amount > 0 ? .white : .wineRed
-//        nameLabel.text = sticker.name
         amountLabel.text = "\(sticker.amount)"
-        if sticker.amount <= 0 {
-            amountBadge.removeFromSuperview()
-        }
+        
+        amountBadge.isHidden = sticker.amount <= 0
         
         borderView.backgroundColor = sticker.amount > 0 ? .ownedGreen : .white
         self.backgroundColor = .clear
@@ -85,7 +99,7 @@ class StickerCell: UICollectionViewCell {
         
         self.sticker = nil
         
-        borderView.frame = self.bounds
+//        borderView.frame = self.bounds
         
         self.addSubview(borderView)
         self.addSubview(numberLabel)
@@ -96,6 +110,11 @@ class StickerCell: UICollectionViewCell {
         self.bringSubviewToFront(amountLabel)
         
         NSLayoutConstraint.activate([
+            borderView.widthAnchor.constraint(equalTo: self.widthAnchor),
+            borderView.heightAnchor.constraint(equalTo: self.heightAnchor),
+            borderView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            borderView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            
             numberLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             numberLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
