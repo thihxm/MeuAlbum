@@ -71,8 +71,12 @@ class CategoryCollectionViewController: UIViewController, UICollectionViewDelega
         stickerCollectionView.delegate = self
         stickerCollectionView.dataSource = self
         stickerCollectionView.backgroundColor = .clear
-
-        // Do any additional setup after loading the view.
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
+        longPressRecognizer.minimumPressDuration = 0.5
+        longPressRecognizer.delegate = self
+        longPressRecognizer.delaysTouchesBegan = true
+        self.stickerCollectionView.addGestureRecognizer(longPressRecognizer)
     }
 
     // MARK: UICollectionViewDataSource
@@ -110,5 +114,27 @@ extension CategoryCollectionViewController: StickerCalendarCollectionDelegate {
         let stickers = category.stickers?.allObjects as! [Sticker]
         self.stickers = stickers.sorted(by: { $0.number < $1.number })
         self.stickerCollectionView?.reloadData()
+    }
+}
+
+extension CategoryCollectionViewController: UIGestureRecognizerDelegate {
+    @objc func handleLongPress(gesture : UILongPressGestureRecognizer!) {
+        if gesture.state != .ended {
+            return
+        }
+
+        let p = gesture.location(in: self.stickerCollectionView)
+
+        if let indexPath = self.stickerCollectionView.indexPathForItem(at: p) {
+            let clickedCell = self.stickerCollectionView.cellForItem(at: indexPath)! as! StickerCell
+            let sticker = clickedCell.sticker!
+            if sticker.amount > 0 {
+                sticker.amount -= 1
+            }
+            PersistenceController.preview.save()
+            self.stickerCollectionView.reloadData()
+        } else {
+            print("couldn't find index path")
+        }
     }
 }

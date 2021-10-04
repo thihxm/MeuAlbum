@@ -27,6 +27,12 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
         self.collectionView!.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 24, right: 16)
         
         self.delegate = stickerCollectionVC
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
+        longPressRecognizer.minimumPressDuration = 0.5
+        longPressRecognizer.delegate = self
+        longPressRecognizer.delaysTouchesBegan = true
+        self.collectionView!.addGestureRecognizer(longPressRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +46,7 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
         } catch {
             print(error)
         }
+        self.collectionView.reloadData()
     }
 
     // MARK: UICollectionViewDataSource
@@ -107,6 +114,28 @@ class StickerCalendarCollectionViewController: UICollectionViewController, UICol
         sticker?.amount += 1
         PersistenceController.preview.save()
         collectionView.reloadData()
+    }
+}
+
+extension StickerCalendarCollectionViewController: UIGestureRecognizerDelegate {
+    @objc func handleLongPress(gesture : UILongPressGestureRecognizer!) {
+        if gesture.state != .ended {
+            return
+        }
+
+        let p = gesture.location(in: self.collectionView)
+
+        if let indexPath = self.collectionView.indexPathForItem(at: p) {
+            let clickedCell = self.collectionView.cellForItem(at: indexPath)! as! StickerNumberCollectionViewCell
+            let sticker = clickedCell.sticker!
+            if sticker.amount > 0 {
+                sticker.amount -= 1
+            }
+            PersistenceController.preview.save()
+            self.collectionView.reloadData()
+        } else {
+            print("couldn't find index path")
+        }
     }
 }
 
